@@ -94,7 +94,11 @@ class RandomAprilTagTurnsNode(object):
                         #randomIndex = numpy.random.randint(len(availableTurns))
                         #chosenTurn = availableTurns[randomIndex]
                         self.turn_type = chosenTurn
+<<<<<<< HEAD
                         #self.turn_type = 3
+=======
+                        #self.turn_type = 2
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
                         self.pub_turn_type.publish(self.turn_type)
                         rospy.loginfo("possible turns %s." %(availableTurns))
                         rospy.loginfo("Turn type now: %i" %(self.turn_type))

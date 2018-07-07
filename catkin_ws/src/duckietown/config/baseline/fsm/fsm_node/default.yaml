@@ -58,10 +58,13 @@ events: #Maps from subscribing topic to signal ids
     topic: "vehicle_avoidance_control_node/vehicle_detected"
     msg_type: "BoolStamped"
     trigger: False
+<<<<<<< HEAD
   at_stop_back:
     topic: "tsp_salesman_nagivation/at_stop_back"
     msg_type: "BoolStamped"
     trigger: True
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 #  A_yellow:    #using in summer school for following one color
 #    topic: "joy_mapper_node/good_yellow"
 #    msg_type: "BoolStamped"
@@ -138,9 +141,13 @@ states:
     lights: ["parallel_autonomy"]
   LANE_FOLLOWING:
     transitions:
+<<<<<<< HEAD
       at_stop_back: "INTERSECTION_CONTROL"
       at_stop_line: "COORDINATION"
       vehicle_detection: "AVOID_VEHICLE"
+=======
+      at_stop_line: "COORDINATION"
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 #      lost_lane: "LANE_RECOVERY"
     active_nodes:
       - lane_filter_node
@@ -185,6 +192,7 @@ states:
       - led_emitter_node
   AVOID_VEHICLE:
     transitions:
+<<<<<<< HEAD
       vehicle_cleared: "LANE_FOLLOWING" #"PARALLEL_AUTONOMY"
     active_nodes:
       - vehicle_detector_node
@@ -192,6 +200,12 @@ states:
 #      - lane_filter_node
 #      - line_detector_node
 #      - apriltag_node
+=======
+      vehicle_cleared: "PARALLEL_AUTONOMY"
+    active_nodes:
+      - vehicle_detector_node
+      - decoder_node
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
     lights: ["avoid_vehicle"]
   AVOID_OBSTACLE:
     transitions:

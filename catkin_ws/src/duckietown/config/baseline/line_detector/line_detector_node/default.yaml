@@ -15,11 +15,19 @@ detector:
      
       hsv_white1:  [0,0,220]  # blue1 is [100,50,150]
       hsv_white2:  [180,15,255]  # blue2 is [150,255,255]
+<<<<<<< HEAD
       hsv_yellow1: [90,100,100] #original yellow1 [25,30,70]
       hsv_yellow2: [130,255,255] #45 255 255
+=======
+      hsv_yellow1: [25,30,70] #original yellow1 [25,140,100]
+      hsv_yellow2: [45,255,255]
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
       hsv_red1:    [0,70,80]
       hsv_red2:    [10,255,255]
       hsv_red3:    [170,70,80]
       hsv_red4:    [180,255,255]
+<<<<<<< HEAD
       hsv_blue1:   [90,100,100]
       hsv_blue2:   [130,255,255]
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c

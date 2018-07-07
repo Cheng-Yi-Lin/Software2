@@ -12,7 +12,10 @@
         <arg name="param_file_name" default="default" />
         <arg name="line_detector_param_file_name" default="default" />
         <arg name="anti_instagram" default="true" />
+<<<<<<< HEAD
         <arg name="vehicle_avoidance" default="true" />
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
     </include>
     <include file="$(find tsp_salesman_nagivation)/launch/socket_qwer_node.launch">
         <arg name="veh" value="$(arg veh)"/>

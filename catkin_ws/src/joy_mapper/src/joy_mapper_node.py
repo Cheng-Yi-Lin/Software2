@@ -73,12 +73,20 @@ class JoyMapper(object):
         if self.bicycle_kinematics:
             # Implements Bicycle Kinematics - Nonholonomic Kinematics
             # see https://inst.eecs.berkeley.edu/~ee192/sp13/pdf/steer-control.pdf
+<<<<<<< HEAD
             steering_angle = self.joy.axes[0] * self.steer_angle_gain
+=======
+            steering_angle = self.joy.axes[3] * self.steer_angle_gain
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             #steering_angle = self.joy.axes[0] * self.steer_angle_gain #using left stick can turn left or right
             car_cmd_msg.omega = car_cmd_msg.v / self.simulated_vehicle_length * math.tan(steering_angle)
         else:
             # Holonomic Kinematics for Normal Driving
+<<<<<<< HEAD
             car_cmd_msg.omega = self.joy.axes[0] * self.omega_gain
+=======
+            car_cmd_msg.omega = self.joy.axes[3] * self.omega_gain
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             #car_cmd_msg.omega = self.joy.axes[0] * self.omega_gain
         self.pub_car_cmd.publish(car_cmd_msg)
 
@@ -97,6 +105,7 @@ class JoyMapper(object):
             override_msg.header.stamp = self.joy.header.stamp
             override_msg.data = False
             self.pub_joy_override.publish(override_msg)
+<<<<<<< HEAD
         
         #elif (joy_msg.buttons[5] == 1): # Right back button
         #    self.state_verbose ^= True
@@ -111,6 +120,20 @@ class JoyMapper(object):
         #    parallel_autonomy_msg.data = self.state_parallel_autonomy
         #    self.pub_parallel_autonomy.publish(parallel_autonomy_msg)
         
+=======
+        elif (joy_msg.buttons[5] == 1): # Right back button
+            self.state_verbose ^= True
+            rospy.loginfo('state_verbose = %s' % self.state_verbose)
+            rospy.set_param('line_detector_node/verbose', self.state_verbose) # bad - should be published for all to hear - not set a specific param
+
+        elif (joy_msg.buttons[4] == 1): #Left back button
+            self.state_parallel_autonomy ^= True
+            rospy.loginfo('state_parallel_autonomy = %s' % self.state_parallel_autonomy)
+            parallel_autonomy_msg = BoolStamped()
+            parallel_autonomy_msg.header.stamp = self.joy.header.stamp
+            parallel_autonomy_msg.data = self.state_parallel_autonomy
+            self.pub_parallel_autonomy.publish(parallel_autonomy_msg)
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         elif (joy_msg.buttons[3] == 1):
             anti_instagram_msg = BoolStamped()
             anti_instagram_msg.header.stamp = self.joy.header.stamp
@@ -127,6 +150,7 @@ class JoyMapper(object):
             avoidance_msg.header.stamp = self.joy.header.stamp
             avoidance_msg.data = True 
             self.pub_avoidance.publish(avoidance_msg)
+<<<<<<< HEAD
             print("llllllllllllllllllllllllllllllllllll")
 #        elif (joy_msg.buttons[0] == 1): #push A joystick button 
 #            change_lane_msg = BoolStamped()
@@ -144,6 +168,18 @@ class JoyMapper(object):
 #             avoidance_msg.data = True
 #             self.pub_avoidance.publish(avoidance_msg)
 #             print("tttttttttttttttttttttttttttttttttttttttttttttttttttT")
+=======
+        elif (joy_msg.buttons[0] == 1): #push A joystick button 
+#            change_lane_msg = BoolStamped()
+            rospy.loginfo('start lane following with Yellow mode')
+#            change_lane_msg.header.stamp = self.joy.header.stamp
+#            change_lane_msg.data = True 
+#            self.pub_change_lane.publish(change_lane_msg)
+            qwer_msg = BoolStamped()
+            qwer_msg.header.stamp = self.joy.header.stamp
+            qwer_msg.data = True
+            self.pub_switch.publish(qwer_msg)
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         elif (joy_msg.buttons[1] == 1): #push B joystick button 
 #            change_lane_msg = BoolStamped()
             rospy.loginfo('start lane following with Blue mode')

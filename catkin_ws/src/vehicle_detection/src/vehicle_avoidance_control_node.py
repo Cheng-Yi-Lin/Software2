@@ -25,8 +25,13 @@ class VehicleAvoidanceControlNode(object):
 		return value
 
 	def callback(self, data):
+<<<<<<< HEAD
 		vehicle_too_close = BoolStamped()
 		vehicle_too_close.header.stamp = data.header.stamp
+=======
+                vehicle_too_close = BoolStamped()
+                vehicle_too_close.header.stamp = data.header.stamp
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 		if not data.data:
 			vehicle_too_close.data = False
 		else:
@@ -36,11 +41,17 @@ class VehicleAvoidanceControlNode(object):
 
 	def publishCmd(self,stamp): 
 		cmd_msg = Twist2DStamped()
+<<<<<<< HEAD
 		cmd_msg.header.stamp = stamp
 		cmd_msg.v = 0.0
 		cmd_msg.omega = 0.0
 		#print("ooooooooooooooooooooooooooooooooo")
 		#print stamp
+=======
+                cmd_msg.header.stamp = stamp
+		cmd_msg.v = 0.0
+		cmd_msg.omega = 0.0
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 		self.car_cmd_pub.publish(cmd_msg)
    
 if __name__ == '__main__':

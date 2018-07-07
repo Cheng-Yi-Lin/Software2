@@ -174,8 +174,12 @@ class LineDetectorNode(object):
         white = self.detector.detectLines('white')
         yellow = self.detector.detectLines('yellow')
         red = self.detector.detectLines('red')
+<<<<<<< HEAD
         blue=self.detector.detectLines('blue')
         #print(blue)
+=======
+
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         tk.completed('detected')
      
         # SegmentList constructor
@@ -188,19 +192,26 @@ class LineDetectorNode(object):
         if len(white.lines) > 0:
             lines_normalized_white = ((white.lines + arr_cutoff) * arr_ratio)
             segmentList.segments.extend(self.toSegmentMsg(lines_normalized_white, white.normals, Segment.WHITE))
+<<<<<<< HEAD
             #print("11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
             #print(Segment.WHITE)
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         if len(yellow.lines) > 0:
             lines_normalized_yellow = ((yellow.lines + arr_cutoff) * arr_ratio)
             segmentList.segments.extend(self.toSegmentMsg(lines_normalized_yellow, yellow.normals, Segment.YELLOW))
         if len(red.lines) > 0:
             lines_normalized_red = ((red.lines + arr_cutoff) * arr_ratio)
             segmentList.segments.extend(self.toSegmentMsg(lines_normalized_red, red.normals, Segment.RED))
+<<<<<<< HEAD
         """
         if len(blue.lines) > 0:
             lines_normalized_blue = ((blue.lines + arr_cutoff) * arr_ratio)
             segmentList.segments.extend(self.toSegmentMsg(lines_normalized_blue, blue.normals,Segment.BLUE))
         """
+=======
+        
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         self.intermittent_log('# segments: white %3d yellow %3d red %3d' % (len(white.lines),
                 len(yellow.lines), len(red.lines)))
         
@@ -219,7 +230,11 @@ class LineDetectorNode(object):
             drawLines(image_with_lines, white.lines, (0, 0, 0))
             drawLines(image_with_lines, yellow.lines, (255, 0, 0))
             drawLines(image_with_lines, red.lines, (0, 255, 0))
+<<<<<<< HEAD
             drawLines(image_with_lines, blue.lines, (0, 0, 255))
+=======
+
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             tk.completed('drawn')
 
             # Publish the frame with lines

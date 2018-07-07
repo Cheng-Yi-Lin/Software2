@@ -51,6 +51,10 @@ def color_segment(area_white, area_red, area_yellow):
         x[:,:,G] *= 1
         x[:,:,B] *= 0
         return x
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
     h, w = area_white.shape
     orig = [area_white, area_red, area_yellow]
     masks = [white(area_white), red(area_red), yellow(area_yellow)]
@@ -60,6 +64,10 @@ def color_segment(area_white, area_red, area_yellow):
     for i, m in enumerate(masks):
         nz = (orig[i] > 0) * 1.0
         assert nz.shape == (h, w), nz.shape
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         for j in [0, 1, 2]:
             res[:,:,j] = (1-nz) * res[:,:,j].copy() + (nz) * m[:,:,j]
 

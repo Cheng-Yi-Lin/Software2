@@ -67,10 +67,14 @@ class OpenLoopIntersectionNode(object):
         return maneuver
 
     def cbTurnType(self,msg):
+<<<<<<< HEAD
         #print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
         print(self.mode)
         if self.mode == "INTERSECTION_CONTROL":
             #print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+=======
+        if self.mode == "INTERSECTION_CONTROL":
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             self.turn_type = msg.data #Only listen if in INTERSECTION_CONTROL mode
             self.trigger(self.turn_type)
 
@@ -102,7 +106,10 @@ class OpenLoopIntersectionNode(object):
         msg.data = True
         self.pub_done.publish(msg)
         rospy.loginfo("[%s] interesction_done!" %(self.node_name))
+<<<<<<< HEAD
         print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
     
     def update_trajectory(self,turn_type):
         rospy.loginfo("updating trajectory: distance from stop_line=%s, lane_pose_phi = %s", self.stop_line_reading.stop_line_point.x,  self.lane_pose.phi)
@@ -129,7 +136,11 @@ class OpenLoopIntersectionNode(object):
 
         if (self.trajectory_reparam):
             self.update_trajectory(turn_type)
+<<<<<<< HEAD
         self.maneuvers[0] = self.getManeuver("turn_left")
+=======
+
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         published_already = False
         for index, pair in enumerate(self.maneuvers[turn_type]):
             cmd = copy.deepcopy(pair[1])
@@ -140,13 +151,17 @@ class OpenLoopIntersectionNode(object):
                     return
                 cmd.header.stamp = rospy.Time.now()
                 self.pub_cmd.publish(cmd)
+<<<<<<< HEAD
                 print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
                 print(index)
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
                 if index > 1:
                     # See if need to publish interesction_done
                     if self.in_lane and not (published_already):
                         published_already = True
                         self.publishDoneMsg()
+<<<<<<< HEAD
                         print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
                         return
                 self.rate.sleep()
@@ -155,6 +170,13 @@ class OpenLoopIntersectionNode(object):
         if not published_already:
             self.publishDoneMsg()
             print("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
+=======
+                        return
+                self.rate.sleep()
+        # Done with the sequence
+        if not published_already:
+            self.publishDoneMsg()
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 
     def on_shutdown(self):
         rospy.loginfo("[%s] Shutting down." %(self.node_name))

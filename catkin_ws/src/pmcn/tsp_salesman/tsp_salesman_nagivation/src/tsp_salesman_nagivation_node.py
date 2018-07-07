@@ -2,8 +2,13 @@
 import rospy
 import socket
 import pygame
+<<<<<<< HEAD
 from duckietown_msgs.msg import  Twist2DStamped, BoolStamped, StopLineReading
 from std_msgs.msg import String, Int32, Int16
+=======
+from duckietown_msgs.msg import  Twist2DStamped, BoolStamped
+from std_msgs.msg import String, Int32
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 from Adafruit_PWM_Servo_Driver import PWM
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 import time
@@ -25,20 +30,28 @@ class Qwer_Player(object):
         #set global variable
         #self.pub_CommodityInfo=rospy.Publisher("commodity_info",String, queue_size=1)
         self.sub_commodity = rospy.Subscriber("~commodity_info", String, self.salesman, queue_size=1)
+<<<<<<< HEAD
         self.pub_at_stop_line = rospy.Publisher("stop_line_filter_node/at_stop_line",BoolStamped,queue_size=1)
         self.type_back=rospy.Publisher("open_loop_intersection_control_node/turn_type", Int16, queue_size=1)
         self.pub_stop_line_reading = rospy.Publisher("stop_line_filter_node/stop_line_reading", StopLineReading, queue_size=1)
         self.pub_at_stop_back = rospy.Publisher("~at_stop_back",BoolStamped,queue_size=1)
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         self.flag = 0
         self.sound = ''
         self.n_stop = False
         self.path_commodity=list()
         self.path_commodity.append(0)
         self.car_action_check=1
+<<<<<<< HEAD
         self.back_info=0
         self.last_commodity_tag=0
         self.car_read_action()
         self.last_action=""       
+=======
+        self.car_read_action()
+        
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         #self.path_commodity=None
     def car_read_action(self):
         while True:
@@ -47,6 +60,7 @@ class Qwer_Player(object):
             response = urllib2.urlopen(req)
             the_page = response.read()
             #self.car_action_check=int(the_page)
+<<<<<<< HEAD
             """
             if(self.car_action_check!=int(the_page)):
                 self.car_action_check=int(the_page)
@@ -89,6 +103,14 @@ class Qwer_Player(object):
                 self.car_action_check=int(the_page)
                 e_stop_msg=BoolStamped()
                 e_stop_msg.data=int(the_page)
+=======
+            #if(self.car_action_check!=int(the_page)):
+            if(True):
+                self.car_action_check=int(the_page)
+                e_stop_msg=BoolStamped()
+                e_stop_msg.data=int(the_page)
+                #self.pub_e_stop.publish(e_stop_msg)pub_lanefollowing
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
                 self.pub_lanefollowing.publish(e_stop_msg)
                 #print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee")
     def salesman(self,Commodity):
@@ -126,9 +148,14 @@ class Qwer_Player(object):
                 break
             i=i+1
         print(commodity_exist)
+<<<<<<< HEAD
         #print("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
         if  commodity_exist==1:
             #print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+=======
+        print("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
+        if  commodity_exist==1:
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             strhttp='http://192.168.0.100/tsp/car_record_action.php?car_id=1&car_action=1'
             req = urllib2.Request(strhttp)
             response = urllib2.urlopen(req)
@@ -139,9 +166,13 @@ class Qwer_Player(object):
             req = urllib2.Request(strhttp)
             response = urllib2.urlopen(req)
             the_page = response.read()
+<<<<<<< HEAD
             self.last_action=the_page[0]
             self.last_commodity_tag=tag_id.data
             #print(self.last_commodity_tag)
+=======
+            
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             self.sound="/home/ubuntu/duckietown/catkin_ws/src/summer_school/qwer_nutn/socket_qwer/include/socket_qwer/1234.mp3"
             rospy.loginfo(' ---------Found Tag playing guide vocie-----------')
             #e_stop_msg = BoolStamped()
@@ -164,7 +195,11 @@ class Qwer_Player(object):
         pygame.mixer.music.set_volume(1)  #The value argument is between 0.0 and 1.0
         #pygame.mixer.music.set_endevent(self.set_event_fun)
         time.sleep(5)
+<<<<<<< HEAD
         print("music end")
+=======
+        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
         # while pygame.mixer.music.get_busy():  #it will play sound until the sound finished
         # pygame.time.Clock().tick(10)           
 

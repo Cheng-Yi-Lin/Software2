@@ -82,7 +82,10 @@ class WheelsCmdSwitchNode(object):
 
     def cbWheelsCmd(self,msg,src_name):
         if src_name == self.current_src_name:
+<<<<<<< HEAD
             print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
             self.pub_cmd.publish(msg)
 
     def on_shutdown(self):

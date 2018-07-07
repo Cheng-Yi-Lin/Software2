@@ -69,12 +69,19 @@ class VehicleDetectionNode(object):
 				self.publish_circles))
 
 	def cbSwitch(self, switch_msg):
+<<<<<<< HEAD
 		self.active = True #switch_msg.data
 		#print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
 
 	def cbImage(self, image_msg):
 		if not self.active:
 			#print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+=======
+		self.active = switch_msg.data
+
+	def cbImage(self, image_msg):
+		if not self.active:
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 			return
 		# Start a daemon thread to process the image
 		thread = threading.Thread(target=self.processImage,args=(image_msg,))
@@ -83,16 +90,23 @@ class VehicleDetectionNode(object):
 		# Returns rightaway
 	
 	def processImage(self, image_msg):
+<<<<<<< HEAD
 		#print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 		if self.lock.testandset():
 			#print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+=======
+		if self.lock.testandset():
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 			vehicle_detected_msg_out = BoolStamped()
 			try:
 				image_cv=self.bridge.imgmsg_to_cv2(image_msg,"bgr8")
 			except CvBridgeError as e:
 				print e
 			start = rospy.Time.now()
+<<<<<<< HEAD
 			#print("ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 			params = cv2.SimpleBlobDetector_Params()
 			params.minArea = self.blobdetector_min_area
 			params.minDistBetweenBlobs = self.blobdetector_min_dist_between_blobs
@@ -104,14 +118,20 @@ class VehicleDetectionNode(object):
 			self.pub_time_elapsed.publish(elapsed_time)
 			vehicle_detected_msg_out.data = detection
 			self.pub_detection.publish(vehicle_detected_msg_out)
+<<<<<<< HEAD
 			#print detection
 			#print corners
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 			if self.publish_circles:
 				cv2.drawChessboardCorners(image_cv, 
 						self.circlepattern_dims, corners, detection)
 				image_msg_out = self.bridge.cv2_to_imgmsg(image_cv, "bgr8")
 				self.pub_circlepattern_image.publish(image_msg_out)
+<<<<<<< HEAD
 				#print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+=======
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 			self.lock.unlock()
 
 if __name__ == '__main__': 

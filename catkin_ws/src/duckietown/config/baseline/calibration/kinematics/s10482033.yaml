@@ -1,7 +1,15 @@
 baseline: 0.1
+<<<<<<< HEAD
 calibration_time: 1970-01-01-01-17-45
+=======
+calibration_time: 1970-01-01-01-30-28
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
 gain: 0.5
 k: 27.0
 limit: 1.0
 radius: 0.0318
+<<<<<<< HEAD
 trim: -0.009999999776482582
+=======
+trim: 0.008999999612569809
+>>>>>>> 2d356ff5df7440b437fd8915a698c3f4ba9b0c0c
